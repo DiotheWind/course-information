@@ -8,12 +8,8 @@ const Course = ({ course }) => {
   )
 }
 
-const Header = (props) => {
-  return (
-    <>
-      <h1>{props.heading}</h1>
-    </>
-  )
+const Header = ({ heading }) => {
+  return <h1>{heading}</h1>
 }
 
 const Content = ({ parts }) => {
