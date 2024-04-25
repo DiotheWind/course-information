@@ -1,3 +1,13 @@
+const Course = ({ course }) => {
+  return (
+    <div>
+      <Header heading={course.name} />
+      <Content course={course.parts} />
+      <Total total={course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises} />
+    </div>
+  )
+}
+
 const Header = (props) => {
   return (
     <>
@@ -52,11 +62,12 @@ const App = () => {
   }
 
   return (
-    <div>
-      <Header heading={course.name} />
-      <Content course={course.parts} />
-      <Total total={course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises} />
-    </div>
+    // <div>
+    //   <Header heading={course.name} />
+    //   <Content course={course.parts} />
+    //   <Total total={course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises} />
+    // </div>
+    <Course course={course} />
   )
 }
 
