@@ -2,8 +2,7 @@ const Course = ({ course }) => {
   return (
     <div>
       <Header heading={course.name} />
-      <Content course={course.parts} />
-      <Total total={course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises} />
+      <Content parts={course.parts} />
     </div>
   )
 }
@@ -16,22 +15,20 @@ const Header = (props) => {
   )
 }
 
-const Content = (props) => {
+const Content = ({ parts }) => {
   return (
-      <>
-        <Part part={props.course[0].name} exercises={props.course[0].exercises} />
-        <Part part={props.course[1].name} exercises={props.course[1].exercises} />
-        <Part part={props.course[2].name} exercises={props.course[2].exercises} />
-      </>
+      <div>
+        <ul>
+          {parts.map(part => (
+            <Part key={part.id} part={part} />
+          ))}
+        </ul>
+      </div>
   )
 }
 
-const Part = (props) => {
-  return (
-    <>
-      <p>{props.part}: {props.exercises}</p>
-    </>
-  )
+const Part = ({ part }) => {
+  return <li>{part.name} {part.exercises}</li>
 }
 
 const Total = (props) => {
@@ -48,25 +45,28 @@ const App = () => {
     parts: [
       {
         name: "Fundamentals of React",
-        exercises: 10
+        exercises: 10,
+        id: 1
       },
       {
         name: "Using props to pass data",
-        exercises: 7
+        exercises: 7,
+        id: 2
       },
       {
         name: "state of a component",
-        exercises: 14
+        exercises: 14,
+        id: 3
+      },
+      {
+        name: 'Using git and github',
+        exercises: 4,
+        id: 4
       }
     ],
   }
 
   return (
-    // <div>
-    //   <Header heading={course.name} />
-    //   <Content course={course.parts} />
-    //   <Total total={course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises} />
-    // </div>
     <Course course={course} />
   )
 }
